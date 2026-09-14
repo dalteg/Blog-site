@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts | My Blog</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'home' %}">
+                <strong>My Blog</strong>
+            </a>
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'post' %}">Posts</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section>
+            <p>THE BLOG</p>
+
+            <h1>All Posts</h1>
+
+            <p>
+                Thoughts, stories, lessons and ideas from the journey.
+            </p>
+        </section>
+
+
+        <section>
+
+            {% for post in posts %}
+
+                <article>
+
+                    {% if post.featured_image %}
+                        <img
+                            src="{{ post.featured_image.url }}"
+                            alt="{{ post.title }}"
+                        >
+                    {% endif %}
+
+                    <p>
+                        {{ post.created_at|date:"F j, Y" }}
+                    </p>
+
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+
+                    <p>
+                        {{ post.content|truncatewords:30 }}
+                    </p>
+
+                    <a href="#">
+                        Read article →
+                    </a>
+
+                </article>
+
+            {% empty %}
+
+                <p>
+                    There are no posts yet.
+                </p>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 My Blog.</p>
+    </footer>
+
+</body>
+</html>
