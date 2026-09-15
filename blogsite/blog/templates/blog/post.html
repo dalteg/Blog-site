@@ -53,6 +53,10 @@
                     <h2>
                         {{ post.title }}
                     </h2>
+   
+                    {% for tag in post.tags.all %}
+                        <span>{{ tag.name }}</span>
+                    {% endfor %}
 
                     <p>
                         {{ post.content|truncatewords:30 }}
@@ -63,6 +67,8 @@
                     </a>
 
                 </article>
+
+
 
             {% empty %}
 

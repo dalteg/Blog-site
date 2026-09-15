@@ -60,29 +60,34 @@
                 <p>LATEST FROM THE BLOG</p>
 
                 <h2>Latest Post</h2>
-            </div>
 
-            <article>
+                {% if latest_post %}
 
-                <div>
-                    <p>September 13, 2026</p>
+                    <p>{{ latest_post.created_at|date:"F j, Y" }}</p>
 
-                    <h3>
-                        My First Blog Post
-                    </h3>
+                    {% if latest_post.featured_image %}
+                        <img
+                            src="{{ latest_post.featured_image.url }}"
+                            alt="{{ latest_post.title }}"
+                        >
+                    {% endif %}
 
-                    <p>
-                        This is where a short introduction to the
-                        latest article will appear. We'll eventually
-                        replace this with real content from our database.
-                    </p>
+                    <h3>{{ latest_post.title }}</h3>
 
-                    <a href="/post/my-first-post/">
+                    <p>{{ latest_post.content|truncatewords:30 }}</p>
+
+                    <a href="{% url 'post-detail' latest_post.slug %}">
                         Read article →
                     </a>
-                </div>
 
-            </article>
+                {% else %}
+
+                    <p>No published posts yet.</p>
+
+                {% endif %}
+            </div>
+
+            
 
         </section>
 
