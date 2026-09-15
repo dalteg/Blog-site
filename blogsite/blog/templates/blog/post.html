@@ -58,7 +58,7 @@
                         {{ post.content|truncatewords:30 }}
                     </p>
 
-                    <a href="#">
+                    <a href="{% url 'post-detail' post.slug %}">
                         Read article →
                     </a>
 
