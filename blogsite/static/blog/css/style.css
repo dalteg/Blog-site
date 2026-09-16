@@ -1,0 +1,425 @@
+/* =========================
+   RESET & GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
+    color: #222;
+    line-height: 1.7;
+}
+
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* =========================
+   SITE HEADER
+========================= */
+
+body > header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 0;
+}
+
+header nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header strong {
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+header nav div {
+    display: flex;
+    gap: 28px;
+}
+
+header nav a {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+header nav a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+main > section {
+    margin-bottom: 70px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+main > section:first-child {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+main > section:first-child h1 {
+    max-width: 800px;
+    margin: 15px auto;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+main > section:first-child p {
+    max-width: 650px;
+    margin: 15px auto;
+    color: #666;
+}
+
+
+/* =========================
+   BLOG POST CARDS
+========================= */
+
+article {
+    background: #ffffff;
+    margin-bottom: 45px;
+    padding: 0 0 30px;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+article img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+article > p,
+article > h2,
+article > a,
+article > span,
+article > footer,
+article > section,
+article > header {
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+article > p:first-of-type {
+    margin-top: 28px;
+    margin-bottom: 8px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+article h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    letter-spacing: -0.7px;
+}
+
+article p {
+    color: #555;
+}
+
+article > a {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+article > a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   TAGS
+========================= */
+
+article span {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #555;
+    padding: 5px 12px;
+    margin-top: 5px;
+    margin-right: 6px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+
+/* =========================
+   INDIVIDUAL POST PAGE
+========================= */
+
+main > article {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main > article h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+main > article section {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+main > article section p {
+    margin-bottom: 25px;
+}
+
+main > article footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+
+/* =========================
+   POST HEADER
+========================= */
+
+article header {
+    margin-bottom: 30px;
+}
+
+article header p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+article header img {
+    width: 100%;
+    max-height: 550px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 25px;
+}
+
+
+/* =========================
+   BACK TO POSTS
+========================= */
+
+main > nav {
+    max-width: 900px;
+    margin: 30px auto 0;
+}
+
+main > nav a {
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+main > section p {
+    color: #555;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+body > footer {
+    background: #111;
+    color: #aaa;
+    padding: 45px 24px;
+    margin-top: 50px;
+}
+
+body > footer p {
+    max-width: 1100px;
+    margin: 0 auto 15px;
+}
+
+body > footer nav {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+body > footer a {
+    color: #ccc;
+    margin-right: 20px;
+    font-size: 0.9rem;
+}
+
+body > footer a:hover {
+    color: #fff;
+}
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.pagination a {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.pagination a:hover {
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    header nav {
+        padding: 0 18px;
+    }
+
+    header nav div {
+        gap: 15px;
+    }
+
+    main {
+        padding: 35px 16px;
+    }
+
+    main > section:first-child {
+        padding: 40px 10px;
+    }
+
+    main > section:first-child h1 {
+        font-size: 2.5rem;
+    }
+
+    article > p,
+    article > h2,
+    article > a,
+    article > span,
+    article > footer,
+    article > section,
+    article > header {
+        margin-left: 22px;
+        margin-right: 22px;
+    }
+
+    article h2 {
+        font-size: 1.6rem;
+    }
+
+    main > article h1 {
+        font-size: 2.3rem;
+    }
+
+    article img {
+        max-height: 350px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    header nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header nav div {
+        gap: 20px;
+    }
+
+    main {
+        padding: 25px 12px;
+    }
+
+    main > section:first-child h1 {
+        font-size: 2.1rem;
+        letter-spacing: -1px;
+    }
+
+    article {
+        border-radius: 8px;
+    }
+
+    article > p,
+    article > h2,
+    article > a,
+    article > span,
+    article > footer,
+    article > section,
+    article > header {
+        margin-left: 18px;
+        margin-right: 18px;
+    }
+
+    article h2 {
+        font-size: 1.4rem;
+    }
+}
