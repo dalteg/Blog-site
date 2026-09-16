@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 
-{% block title %}
-My Blog
-{% endblock %}
+{% block title %}My Blog{% endblock %}
 
 {% block extra_head %}
     <meta
@@ -13,89 +11,93 @@ My Blog
 {% endblock %}
 
 {% block content %}
+<main class="home">
 
-        <!-- Hero Section -->
-        <section>
-            <div>
-                <p>WELCOME</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">Welcome</p>
 
-                <h1>
-                    Ideas, stories and lessons
-                    from the journey.
-                </h1>
+            <h1>
+                Ideas, stories and lessons
+                from the journey.
+            </h1>
 
-                <p>
-                    A place where I share what I'm learning,
-                    building, discovering and thinking about.
-                </p>
+            <p class="lede">
+                A place where I share what I'm learning,
+                building, discovering and thinking about.
+            </p>
 
-                <a href="{% url 'post' %}">
-                    Explore the blog
-                </a>
-            </div>
-        </section>
+            <a class="btn btn-primary" href="{% url 'post' %}">
+                Explore the blog
+            </a>
+        </div>
+    </section>
 
 
-        <!-- Latest Post -->
-        <section>
+    <!-- Latest Post -->
+    <section class="latest">
 
-            <div>
-                <p>LATEST FROM THE BLOG</p>
+        <div class="section-head">
+            <p class="eyebrow">Latest from the blog</p>
+            <h2>Latest Post</h2>
+        </div>
 
-                <h2>Latest Post</h2>
+        {% if latest_post %}
 
-                {% if latest_post %}
+            <article class="featured-card">
 
-                    <p>{{ latest_post.created_at|date:"F j, Y" }}</p>
-
-                    {% if latest_post.featured_image %}
+                {% if latest_post.featured_image %}
+                    <div class="featured-media">
                         <img
                             src="{{ latest_post.featured_image.url }}"
                             alt="{{ latest_post.title }}"
                         >
-                    {% endif %}
+                    </div>
+                {% endif %}
+
+                <div class="featured-body">
+                    <p class="post-date">{{ latest_post.created_at|date:"F j, Y" }}</p>
 
                     <h3>{{ latest_post.title }}</h3>
 
-                    <p>{{ latest_post.content|truncatewords:30 }}</p>
+                    <p class="post-excerpt">{{ latest_post.content|truncatewords:30 }}</p>
 
-                    <a href="{% url 'post-detail' latest_post.slug %}">
-                        Read article →
+                    <a class="btn btn-ghost" href="{% url 'post-detail' latest_post.slug %}">
+                        Read article <span aria-hidden="true">&rarr;</span>
                     </a>
+                </div>
 
-                {% else %}
+            </article>
 
-                    <p>No published posts yet.</p>
+        {% else %}
 
-                {% endif %}
-            </div>
+            <p class="empty-state">No published posts yet.</p>
 
-            
+        {% endif %}
 
-        </section>
+    </section>
 
 
-        <!-- About Section -->
-        <section>
+    <!-- About Section -->
+    <section class="about">
 
-            <div>
-                <p>ABOUT THIS BLOG</p>
+        <div class="about-inner">
+            <p class="eyebrow">About this blog</p>
 
-                <h2>
-                    Building, learning and sharing along the way.
-                </h2>
+            <h2>
+                Building, learning and sharing along the way.
+            </h2>
 
-                <p>
-                    This blog is a collection of ideas, experiences,
-                    tutorials and lessons gathered along the way.
-                    Some posts will be technical, some personal,
-                    and some simply things worth sharing.
-                </p>
-            </div>
+            <p>
+                This blog is a collection of ideas, experiences,
+                tutorials and lessons gathered along the way.
+                Some posts will be technical, some personal,
+                and some simply things worth sharing.
+            </p>
+        </div>
 
-        </section>
+    </section>
 
+</main>
 {% endblock %}
-
-
-    

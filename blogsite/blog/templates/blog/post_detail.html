@@ -4,57 +4,59 @@
 
 
 {% block content %}
-    <main>
+<main class="post-detail">
 
-        <article>
+    <article class="post-article">
 
-            <header>
+        <header class="post-article-header">
 
-                <p>
-                    {{ post.created_at|date:"F j, Y" }}
-                </p>
+            <p class="post-date">
+                {{ post.created_at|date:"F j, Y" }}
+            </p>
 
-                <h1>
-                    {{ post.title }}
-                </h1>
+            <h1>
+                {{ post.title }}
+            </h1>
 
-                {% if post.featured_image %}
+            {% if post.featured_image %}
+                <div class="post-article-media">
                     <img
                         src="{{ post.featured_image.url }}"
                         alt="{{ post.title }}"
                     >
-                {% endif %}
+                </div>
+            {% endif %}
 
-            </header>
-
-
-            <section>
-
-                {{ post.content|linebreaks }}
-
-            </section>
+        </header>
 
 
-            <footer>
+        <section class="post-content">
 
-                {% if post.tags.all %}
-                    <p>Tags:</p>
+            {{ post.content|linebreaks }}
 
+        </section>
+
+
+        {% if post.tags.all %}
+            <footer class="post-article-footer">
+                <p class="tags-label">Tags:</p>
+
+                <div class="tag-list">
                     {% for tag in post.tags.all %}
-                        <span>{{ tag.name }}</span>
+                        <span class="tag">{{ tag.name }}</span>
                     {% endfor %}
-                {% endif %}
-
+                </div>
             </footer>
+        {% endif %}
 
-        </article>
+    </article>
 
 
-        <nav>
-            <a href="{% url 'post' %}">
-                ← Back to all posts
-            </a>
-        </nav>
+    <nav class="post-nav">
+        <a class="link-back" href="{% url 'post' %}">
+            <span aria-hidden="true">&larr;</span> Back to all posts
+        </a>
+    </nav>
 
-    </main>
+</main>
 {% endblock %}
