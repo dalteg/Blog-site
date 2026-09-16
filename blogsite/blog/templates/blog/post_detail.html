@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <title>{{ post.title }} | My Blog</title>
-</head>
-
-<body>
-
-    <header>
-        <nav>
-            <a href="{% url 'home' %}">
-                <strong>My Blog</strong>
-            </a>
-
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'post' %}">Posts</a>
-        </nav>
-    </header>
+{% block title %}{{ post.title }} | My Blog{% endblock %}
 
 
+{% block content %}
     <main>
 
         <article>
@@ -74,11 +57,4 @@
         </nav>
 
     </main>
-
-
-    <footer>
-        <p>&copy; 2026 My Blog.</p>
-    </footer>
-
-</body>
-</html>
+{% endblock %}
