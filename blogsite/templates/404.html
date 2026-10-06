@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found | My Blog{% endblock %}
+
+{% block content %}
+<main class="home">
+
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">404</p>
+
+            <h1>
+                Sorry, we couldn't find that page.
+            </h1>
+
+            <p class="lede">
+                The post you're looking for may have been moved,
+                unpublished, or never existed.
+            </p>
+
+            <a class="btn btn-primary" href="{% url 'post' %}">
+                Browse all posts
+            </a>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
