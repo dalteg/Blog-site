@@ -18,6 +18,14 @@
                 {{ post.title }}
             </h1>
 
+            {% if request.user.is_staff %}
+                <p class="post-edit-link">
+                    <a class="btn btn-ghost" href="{% url 'post-edit' post.slug %}">
+                        Edit post
+                    </a>
+                </p>
+            {% endif %}
+
             {% if post.featured_image %}
                 <div class="post-article-media">
                     <img
@@ -51,6 +59,40 @@
 
     </article>
 
+    <section class="comments-section" id="comments">
+        <h2>Comments ({{ comments|length }})</h2>
+
+        {% for comment in comments %}
+            <article class="comment">
+                <header class="comment-header">
+                    <strong>{{ comment.author_name }}</strong>
+                    <time datetime="{{ comment.created_at|date:'c' }}">
+                        {{ comment.created_at|date:"F j, Y" }}
+                    </time>
+                </header>
+                <div class="comment-content">
+                    {{ comment.content|linebreaks }}
+                </div>
+            </article>
+        {% empty %}
+            <p class="empty-state">No comments yet. Be the first to comment.</p>
+        {% endfor %}
+
+        {% if post.allow_comments %}
+            <div class="comment-form-card">
+                <h3>Leave a comment</h3>
+                <form class="post-form" method="post">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button class="btn btn-primary" type="submit">
+                        Submit comment
+                    </button>
+                </form>
+            </div>
+        {% else %}
+            <p class="comments-closed">Comments are closed for this post.</p>
+        {% endif %}
+    </section>
 
     <nav class="post-nav">
         <a class="link-back" href="{% url 'post' %}">

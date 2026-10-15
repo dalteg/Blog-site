@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{% if object %}Edit post{% else %}Create post{% endif %} | My Blog{% endblock %}
+
+{% block content %}
+<main class="post-form-page">
+    <section class="post-form-card">
+        <p class="eyebrow">Post editor</p>
+        <h1>{% if object %}Edit post{% else %}Create a post{% endif %}</h1>
+
+        <form class="post-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save post</button>
+                <a class="btn btn-ghost" href="{% url 'post' %}">Cancel</a>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}
