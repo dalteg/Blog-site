@@ -35,46 +35,60 @@
     </section>
 
 
-    <!-- Latest Post -->
+    <!-- Recent Posts -->
     <section class="latest">
 
         <div class="section-head">
             <p class="eyebrow">Latest from the blog</p>
-            <h2>Latest Post</h2>
+            <h2>Recent Posts</h2>
         </div>
 
-        {% if latest_post %}
+        <div class="post-grid">
+            {% for post in posts %}
+                <article class="post-card">
 
-            <article class="featured-card">
+                    {% if post.featured_image %}
+                        <div class="post-card-media">
+                            <img
+                                src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}"
+                            >
+                        </div>
+                    {% endif %}
 
-                {% if latest_post.featured_image %}
-                    <div class="featured-media">
-                        <img
-                            src="{{ latest_post.featured_image.url }}"
-                            alt="{{ latest_post.title }}"
-                        >
+                    <div class="post-card-body">
+                        <p class="post-date">
+                            {{ post.created_at|date:"F j, Y" }}
+                        </p>
+
+                        <h2>
+                            <a href="{% url 'post-detail' post.slug %}">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+
+                        {% if post.tags.all %}
+                            <div class="tag-list">
+                                {% for tag in post.tags.all %}
+                                    <span class="tag">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <p class="post-excerpt">
+                            {{ post.content|truncatewords:30 }}
+                        </p>
+
+                        <a class="btn btn-ghost" href="{% url 'post-detail' post.slug %}">
+                            Read article <span aria-hidden="true">&rarr;</span>
+                        </a>
                     </div>
-                {% endif %}
 
-                <div class="featured-body">
-                    <p class="post-date">{{ latest_post.created_at|date:"F j, Y" }}</p>
-
-                    <h3>{{ latest_post.title }}</h3>
-
-                    <p class="post-excerpt">{{ latest_post.content|truncatewords:30 }}</p>
-
-                    <a class="btn btn-ghost" href="{% url 'post-detail' latest_post.slug %}">
-                        Read article <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </div>
-
-            </article>
-
-        {% else %}
-
-            <p class="empty-state">No published posts yet.</p>
-
-        {% endif %}
+                </article>
+            {% empty %}
+                <p class="empty-state">No published posts yet.</p>
+            {% endfor %}
+        </div>
 
     </section>
 
